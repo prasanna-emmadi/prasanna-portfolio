@@ -90,8 +90,9 @@ nav ul li {
   cursor: pointer;
   display: none;
 }
-
 /* Nav end */
+
+
 .hero {
   display: flex;
   align-items: center;
@@ -330,7 +331,7 @@ footer {
     display: block;
   }
 
-  nav ul .show {
+  nav ul.show {
     transform: translateX(0);
   }
 

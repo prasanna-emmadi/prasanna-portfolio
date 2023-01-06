@@ -14,6 +14,8 @@ const burger = document.querySelector("#burger-menu");
 const ul = document.querySelector("nav ul");
 const nav = document.querySelector("nav");
 
+console.log(ul.classList);
+
 burger.addEventListener("click", () => {
   ul.classList.toggle("show");
 });

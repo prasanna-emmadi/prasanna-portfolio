@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+
+<title>CSS VARIABLES</title>
+</head>
+<body><h1 id="cssvariables">CSS Variables</h1>
+<p>CSS Variables usage on the personal website. 
+Instead of repeating the font-family, bg-color and other variables over and over,
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">CSS customer properties(variables)</a> are used.</p>
+<p>In this particular website <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root">:root</a> psuedo-class is used and
+font-family and other variables are created in it.</p>
+<p>CSS code is as follows</p>
+<pre><code>:root {
+  --font-family: "Roboto", sans-serf;
+  --normal-font: 400;
+  --bold-font: 700;
+  --bolder-font: 900;
+  --bg-color: #fcfcfc;
+  --primary-color: #4756df;
+  --secondary-color: #ff7235;
+  --primary-shadow: #8b8eaf;
+  --secondary-shadow: #a17a69;
+  --bottom-margin: 0.5rem;
+  --bottom-margin-2: 1rem;
+  --line-height: 1.7rem;
+  --transition: 0.3s;
+}
+</code></pre>
+</body>
+</html>

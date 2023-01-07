@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+
+<title>MARKDOWN TO HTML USING NODE</title>
+</head>
+<body><h1 id="markdowntohtmlusingnode">Markdown to Html using Node</h1>
+<h2 id="why">Why</h2>
+<p>I have decided to write all my blogs in Markdown, as the syntax is easier to perceive compared to html.
+Then I had to convert all my Markdown to Html files.</p>
+<h2 id="how">How</h2>
+<p>I have done in the following steps</p>
+<ol>
+<li>Get the list of all existing Markdown files.</li>
+<li>Convert each one of them to html using a package called <a href="https://showdownjs.com/">slowdown</a></li>
+<li>Write the generated html content to html files</li>
+</ol>
+<p>Lets explore each of the steps one by one.</p>
+<h3 id="steps">Steps</h3>
+<h4 id="1gettingthelistofallexistingmarkdownfiles">1. Getting the list of all existing Markdown files</h4>
+<p>I have used the node <a href="https://nodejs.org/api/fs.htm">fs/promises</a>  to </p>
+<ul>
+<li>fs.readdir to get the array of the files in the directory</li>
+<li>Array.filter method to filter files with ".md" extension</li>
+</ul>
+<p>The code is follows</p>
+<pre><code>const DEST_PATH = "";
+const getFiles = async () =&gt; {
+  try {
+    const files = await readdir(DEST_PATH);
+    const fileArray = [];
+    for (const file of files) {
+      const fileFullPath = path.join(DEST_PATH, file);
+      fileArray.push(fileFullPath);
+    }
+    return fileArray;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const filterFilesOfType = async (ext) =&gt; {
+  const files = await getFiles();
+  return files.filter((file) =&gt; {
+    const parsedResult = path.parse(file);
+    return parsedResult.ext === ext;
+  });
+};
+
+const getMarkdownFiles = async () =&gt; {
+  return await filterFilesOfType(".md");
+};
+</code></pre>
+<h3 id="23convertmarkdowntohtmlfiles">2 &amp; 3. Convert Markdown to html files</h3>
+<p>I have used a package called <a href="https://showdownjs.com/">slowdown</a> in the following ways</p>
+<ul>
+<li>Create a instance of converter</li>
+<li>Read the contents of the Markdown file </li>
+<li>Call converter.makeHtml to convert the contents of Markdown file to html</li>
+</ul>
+<p>The code is as follows</p>
+<pre><code>const convertToMarkdown = async (filePath) =&gt; {
+  try {
+    const text = await readFile(filePath, "utf-8");
+    const htmlContent = converter.makeHtml(text);
+    const preHtmlTags = "&lt;html&gt;&lt;body&gt;"; 
+    const postHtmlTags = "&lt;/body&gt;&lt;/html&gt;"; 
+    const allHtmlContent = preHtmlTags + htmlContent + postHtmlTags;
+    // write to file in the blogs dir
+    const htmlFile = getFileNameWithoutExtension(filePath) + ".html";
+
+    writeHtmlFile(htmlFile, allHtmlContent);
+  } catch (error) {
+    console.error(error);
+  }
+};
+</code></pre>
+</body>
+</html>

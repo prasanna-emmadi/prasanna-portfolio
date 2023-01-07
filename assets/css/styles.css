@@ -209,11 +209,35 @@ nav ul li {
 }
 
 /* Blogs */
+.blogs-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .blogs-title {
   text-align: center;
   margin-bottom: 1rem;
 }
+
+.blog-container {
+  text-align: center;
+  width: 21.875rem;
+  padding: 1rem;
+}
+
+.blog-container p {
+  padding: 0.4rem;
+}
+
+.blog-title {
+  margin-bottom: var(--bottom-margin);
+}
+
+.blog-details {
+  margin-bottom: var(--bottom-margin);
+}
+
 
 .blogs-link {
   text-align: center;
